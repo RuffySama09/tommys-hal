@@ -3,251 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tommy's | HAL Old Airport Road</title>
+    <title>Tommy's | The Legacy of HAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FFD700; /* Gold */
-            --dark: #0a0a0a;
-            --dark-gray: #141414;
-            --light-gray: #2a2a2a;
-            --text: #e0e0e0;
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --font-serif: 'Georgia', serif; 
+            --gold: #D4AF37;
+            --gold-dim: #aa8c2c;
+            --black: #050505;
+            --charcoal: #121212;
+            --text-gray: #a0a0a0;
+            --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            background-color: var(--dark); 
-            color: var(--text); 
-            font-family: var(--font-main); 
-            line-height: 1.6;
+            background-color: var(--black); 
+            color: var(--white); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* TYPOGRAPHY */
-        h1, h2, h3 { color: #fff; text-transform: uppercase; letter-spacing: 2px; }
-        h1 { font-family: var(--font-serif); }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
-        /* NAVIGATION */
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+        /* SMOOTH SCROLL */
+        html { scroll-behavior: smooth; }
+
+        /* UTILITIES */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-gold { color: var(--gold); }
+        .text-center { text-align: center; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* NAVIGATION - GLASSMORPHISM */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 20px 0;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
-        .nav-links a { margin-left: 30px; font-size: 0.8rem; font-weight: 600; color: #aaa; }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            /* Darker overlay for moody bar vibe */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
-                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h1 { 
-            font-size: clamp(3rem, 5vw, 5rem); 
-            margin-bottom: 20px; 
-            line-height: 1.1;
-            background: linear-gradient(to right, #fff, #ccc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero p { 
-            font-size: 1.2rem; 
-            color: var(--primary); 
-            font-weight: 400; 
-            margin-bottom: 40px; 
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .cta-btn {
-            padding: 18px 45px;
-            background: transparent;
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid var(--primary);
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-        .cta-btn:hover { background: var(--primary); color: var(--dark); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-
-        /* EXPERIENCE (VIBE) */
-        .vibe { padding: 100px 10%; background: var(--dark-gray); text-align: center; border-top: 1px solid #222; }
-        .vibe h2 { margin-bottom: 30px; color: var(--primary); font-size: 2rem; }
-        .vibe p { max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #999; font-weight: 300; }
-        .vibe-tags { margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .tag { font-size: 0.8rem; border: 1px solid #333; padding: 8px 16px; color: #666; text-transform: uppercase; }
-
-        /* MENU GRID */
-        .menu { padding: 100px 5%; background: var(--dark); }
-        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; color: #fff; }
-        
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .menu-item {
-            background: var(--dark-gray);
-            padding: 35px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #222;
-            transition: all 0.3s ease;
-        }
-        
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 3px; height: 100%;
-            background: var(--primary);
-            opacity: 0.5;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
             transition: 0.3s;
         }
 
-        .menu-item:hover { transform: translateY(-5px); border-color: #333; }
-        .menu-item:hover::before { opacity: 1; }
-        
-        .menu-item h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; letter-spacing: 1px; }
-        .menu-item p { font-size: 0.9rem; color: #888; font-family: var(--font-main); }
-        .price { position: absolute; top: 35px; right: 35px; color: var(--primary); font-weight: 700; font-size: 0.9rem; }
-
-        /* FOOTER */
-        .footer {
-            padding: 80px 5%;
-            background: #050505;
-            text-align: center;
-            border-top: 1px solid #1a1a1a;
-        }
-        
-        .address { 
-            font-style: normal; 
-            margin: 30px 0; 
-            color: #666; 
-            font-size: 1rem;
-            line-height: 2;
-        }
-
-        .map-link {
-            color: var(--primary);
-            border-bottom: 1px solid transparent;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .map-link:hover { border-bottom: 1px solid var(--primary); }
-
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .nav-links { display: none; }
-            .menu-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="logo">TOMMY'S</div>
-        <div class="nav-links">
-            <a href="#vibe">EXPERIENCE</a>
-            <a href="#menu">MENU</a>
-            <a href="#contact">RESERVE</a>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <h1>Classic Vibes.<br>Timeless Pours.</h1>
-        <p>HAL Old Airport Road</p>
-        <a href="tel:+917795798808" class="cta-btn">Book A Table</a>
-    </section>
-
-    <section id="vibe" class="vibe">
-        <h2>The Experience</h2>
-        <p>
-            A neighborhood staple rooted in history. Whether you're unwinding after work 
-            or catching up with old friends, we serve the perfect blend of nostalgia and 
-            modern craft. No fuss, just great drinks and honest food.
-        </p>
-        <div class="vibe-tags">
-            <span class="tag">Since 1966</span>
-            <span class="tag">Draught Beer</span>
-            <span class="tag">Rooftop</span>
-            <span class="tag">Cat Decor</span>
-        </div>
-    </section>
-
-    <section id="menu" class="menu">
-        <h2 class="section-title">Bar Highlights</h2>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <h3>Tommy's Margarita</h3>
-                <p>Our signature take on the classic. Tequila, agave, fresh lime, served on the rocks.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Bheja Masala</h3>
-                <p>A spicy, textural delicacy. Pan-fried brain masala that pairs effortlessly with a cold lager.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Draught Beer</h3>
-                <p>Perfectly chilled taps flowing with your favorite lagers and ales. The heart of the bar.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Suffering Bastard</h3>
-                <p>A potent blend of gin, brandy, and lime cordial. A vintage cure for modern times.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Egg Bhurji</h3>
-                <p>The ultimate comfort food. Spicy scrambled eggs, onions, chilies, served with pav.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Chilli Cheese Naan</h3>
-                <p>Soft tandoor-baked naan stuffed with spicy cheese. The perfect vegetarian bar snack.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="footer">
-        <h2>Visit Us</h2>
-        <address class="address">
-            1st Floor, 89 AM Plaza<br>
-            HAL Old Airport Rd, Murugeshpalya<br>
-            Bengaluru, Karnataka 560017
-        </address>
-        <a href="https://maps.google.com/?q=12.956699,77.653801" target="_blank" class="map-link">Get Directions →</a>
-        <br><br><br>
-        <a href="tel:+917795798808" class="cta-btn" style="border: 1px solid #333; color: #fff; font-size: 0.8rem;">+91 77957 98808</a>
-        <br><br><br>
-        <p style="color: #333; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">© 2026 Tommy's. Established 1966.</p>
-    </section>
-
-</body>
-</html>
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; color: var(--gold); }
+        .nav-links { display: flex;

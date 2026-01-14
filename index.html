@@ -53,4 +53,278 @@
 
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; color: var(--gold); }
-        .nav-links { display: flex;
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        
+        .book-btn {
+            border: 1px solid var(--gold);
+            padding: 10px 25px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .book-btn:hover { background: var(--gold); color: var(--black); box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+
+        /* HERO - PARALLAX */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 150px;
+            background: linear-gradient(to top, var(--black), transparent);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3.5rem, 6vw, 6rem);
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        /* SECTIONS */
+        section { padding: 120px 0; border-bottom: 1px solid #1a1a1a; }
+        
+        .section-header { margin-bottom: 80px; text-align: center; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 20px; font-weight: 400; }
+        .separator { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
+
+        /* ABOUT - SPLIT */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img { width: 100%; border-radius: 4px; filter: grayscale(100%) contrast(1.2); transition: 0.5s; }
+        .about-img:hover { filter: grayscale(0%) contrast(1); }
+        .lead-text { font-size: 1.2rem; color: var(--text-gray); font-weight: 300; margin-bottom: 30px; }
+
+        /* MENU - ELEGANT LIST */
+        .menu-category { margin-bottom: 60px; }
+        .menu-category h3 { font-size: 1.8rem; color: var(--gold); margin-bottom: 30px; text-align: center; font-style: italic; }
+        
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px 80px; }
+        
+        .menu-item { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #222; padding-bottom: 15px; transition: 0.3s; }
+        .menu-item:hover { border-color: var(--gold-dim); transform: translateX(10px); }
+        
+        .item-details h4 { font-size: 1.2rem; font-weight: 500; margin-bottom: 5px; color: var(--white); }
+        .item-desc { font-size: 0.9rem; color: #666; font-style: italic; }
+        .item-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); }
+
+        /* FEATURES (ICONS) */
+        .features { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px; text-align: center; }
+        .feature-box { padding: 30px; border: 1px solid #222; width: 250px; transition: 0.3s; }
+        .feature-box:hover { border-color: var(--gold); background: #0a0a0a; }
+        .feature-icon { font-size: 2rem; color: var(--gold); margin-bottom: 20px; display: block; }
+
+        /* FOOTER - MINIMAL */
+        footer { padding: 80px 0 40px; background: #000; text-align: center; }
+        .footer-logo { font-size: 2.5rem; color: var(--white); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 30px; display: inline-block; }
+        .footer-info { color: #666; font-size: 1rem; margin-bottom: 40px; }
+        .footer-info p { margin-bottom: 10px; }
+        .copyright { border-top: 1px solid #222; padding-top: 30px; font-size: 0.8rem; color: #444; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 3rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .feature-box { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">TOMMY'S</div>
+            <div class="nav-links">
+                <a href="#about">Legacy</a>
+                <a href="#menu">Pour & Plate</a>
+                <a href="#info">Info</a>
+            </div>
+            <a href="tel:+917795798808" class="book-btn">Reserve Table</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <span class="hero-subtitle">Est. 1966 • Murugeshpalya</span>
+            <h1>A Bangalore Original.<br>Reimagined.</h1>
+            <div style="margin-top: 40px;">
+                <a href="#menu" class="book-btn" style="padding: 15px 40px; font-size: 1rem;">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="fade-in">
+                    <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                        <span class="text-gold" style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">The Vibe</span>
+                        <h2>More Than Just<br>A Neighborhood Bar</h2>
+                        <div class="separator" style="margin: 0;"></div>
+                    </div>
+                    <p class="lead-text">
+                        What started as HAL Bar has evolved. We stripped away the noise to bring you what matters: honest drinks, legendary food, and a space that feels like home.
+                    </p>
+                    <p style="color: #666; margin-bottom: 30px;">
+                        From our quirky cat-themed corners to the open rooftop breeze, Tommy’s is a tribute to old Bangalore—slow, soulful, and full of character.
+                    </p>
+                </div>
+                <div class="fade-in">
+                    <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1000&auto=format&fit=crop" alt="Tommy's Interior" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" style="background: var(--charcoal);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Curated Selections</h2>
+                <div class="separator"></div>
+            </div>
+
+            <div class="menu-category fade-in">
+                <h3>Signatures</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>Tommy's Margarita</h4>
+                            <span class="item-desc">Reposado Tequila, Agave, Lime, Sea Salt</span>
+                        </div>
+                        <div class="item-price">₹550</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>The Suffering Bastard</h4>
+                            <span class="item-desc">Gin, Brandy, Lime Cordial, Angostura, Ginger Ale</span>
+                        </div>
+                        <div class="item-price">₹495</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>Classic Draught</h4>
+                            <span class="item-desc">Perfectly chilled Lager / Stout on tap</span>
+                        </div>
+                        <div class="item-price">₹280</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>Batanga</h4>
+                            <span class="item-desc">Tequila, Cola, Lime, Salt Rim</span>
+                        </div>
+                        <div class="item-price">₹450</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category fade-in" style="margin-bottom: 0;">
+                <h3>Small Plates</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>Bheja Masala Fry</h4>
+                            <span class="item-desc">Pan-seared brain masala, green chili, coriander</span>
+                        </div>
+                        <div class="item-price">₹380</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>Chilli Cheese Naan</h4>
+                            <span class="item-desc">Tandoor baked, stuffed with spicy cheddar blend</span>
+                        </div>
+                        <div class="item-price">₹220</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>Egg Bhurji</h4>
+                            <span class="item-desc">Street-style scrambled eggs, butter pav</span>
+                        </div>
+                        <div class="item-price">₹180</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h4>Coorg Pork Fry</h4>
+                            <span class="item-desc">Dark roasted spices, kachampuli vinegar</span>
+                        </div>
+                        <div class="item-price">₹420</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="container">
+            <div class="features fade-in">
+                <div class="feature-box">
+                    <span class="feature-icon">✦</span>
+                    <h4 style="margin-bottom: 10px; color: #fff;">1966 Legacy</h4>
+                    <p style="font-size: 0.9rem; color: #666;">A historic landmark on HAL Old Airport Road, reinvented.</p>
+                </div>
+                <div class="feature-box">
+                    <span class="feature-icon">☀</span>
+                    <h4 style="margin-bottom: 10px; color: #fff;">Rooftop Deck</h4>
+                    <p style="font-size: 0.9rem; color: #666;">Open-air seating perfect for Bangalore evenings.</p>
+                </div>
+                <div class="feature-box">
+                    <span class="feature-icon">★</span>
+                    <h4 style="margin-bottom: 10px; color: #fff;">Pet Friendly</h4>
+                    <p style="font-size: 0.9rem; color: #666;">Bring your furry friends. We love them as much as you do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container fade-in">
+            <div class="footer-logo">TOMMY'S</div>
+            <div class="footer-info">
+                <p class="serif" style="font-size: 1.2rem; color: #fff; margin-bottom: 20px;">1st Floor, 89 AM Plaza, HAL Old Airport Rd</p>
+                <p>Murugeshpalya, Bengaluru, 560017</p>
+                <p><a href="tel:+917795798808" class="text-gold" style="font-weight: 600;">+91 77957 98808</a></p>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tommy's. Crafted for the love of good times.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Intersection Observer for Fade-in Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
